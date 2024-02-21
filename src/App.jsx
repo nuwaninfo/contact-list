@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import contact_list_service from './services/contact_list_service'
 import Table from './components/Table'
+import Form from './components/Form'
 
 function App() {
   const [contactList, setContactList] = useState([])
@@ -20,38 +21,14 @@ function App() {
   return (
     <div>
       <h1>Contact List</h1>
-      <form>
-        <div>
-          Name:
-          <input
-            type='text'
-            name='contactname'
-            value={contactName}
-            onChange={({ target }) => setContactName(target.value)}
-          />
-        </div>
-        <div>
-          Phone:
-          <input
-            type='text'
-            name='phone'
-            value={phone}
-            onChange={({ target }) => setPhone(target.value)}
-          />
-        </div>
-        <div>
-          email:
-          <input
-            type='text'
-            name='email'
-            value={phone}
-            onChange={({ target }) => setEmail(target.value)}
-          />
-        </div>
-        <div>
-          <button type='submit'>Add</button>
-        </div>
-      </form>
+      <Form
+        contactName={contactName}
+        phone={phone}
+        email={email}
+        setContactName={setContactName}
+        setPhone={setPhone}
+        setEmail={setEmail}
+      />
       <Table contactList={contactList} />
     </div>
   )
